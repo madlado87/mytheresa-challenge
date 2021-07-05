@@ -1,6 +1,5 @@
 Feature: Login feature
 
-  @Login
   Scenario: I want to verify I can login into the application.
     Given a new website launched
     And i open the website in a browser

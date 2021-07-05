@@ -5,12 +5,12 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
     features = {"src/test/resources/features/bonus.feature"},
-    glue = {"com.mytheresa.steps"}
-)
+    glue = {"com.mytheresa.steps"},
+    plugin = {"pretty"})
 public class BonusTest extends BaseTest {
-    @Override
-    @DataProvider(parallel = true)
-    public Object[][] scenarios() {
-        return super.scenarios();
-    }
+  @Override
+  @DataProvider(parallel = true)
+  public Object[][] scenarios() {
+    return super.scenarios();
+  }
 }

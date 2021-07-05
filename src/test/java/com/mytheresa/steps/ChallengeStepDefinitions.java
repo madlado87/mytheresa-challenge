@@ -2,7 +2,6 @@ package com.mytheresa.steps;
 
 import com.github.webdriverextensions.Bot;
 import com.mytheresa.impl.Credentials;
-import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,7 +13,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.tuple.Pair;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogType;
 import org.testng.asserts.SoftAssert;
