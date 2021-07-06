@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTheresa qa challenge" configfailurepolicy="continue" parallel="tests" thread-count="5">
+    <test name="Smoke">
+        <packages>
+            <package name="com.mytheresa"/>
+        </packages>
+    </test>
+</suite>

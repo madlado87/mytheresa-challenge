@@ -14,8 +14,14 @@
 * Maven
 
 ## Ejecutando las pruebas ⚙️
+### Ejecutar los test en tu maquina local
+`mvn clean test -D test.execution=local -Pproduction`
+### Ejecutar los test en selenium grid
+```
+./bin/build.sh -> construye la imagen
+./bin/testrun.sh --help
+```
 
-`mvn clean test`
 
 ## Autor ✒️
 

@@ -21,11 +21,16 @@ public class RemoteWebDriverUtils {
 
   public WebDriver instanceDriver() throws MalformedURLException {
     capabilities = new DesiredCapabilities();
-    System.out.println(System.getProperty("test.execution"));
     return "local".equalsIgnoreCase(System.getProperty("test.execution"))
-        ? instanceLocalDriver(System.getProperty("test.browser"))
+        ? instanceLocalDriver(
+            System.getProperty("test.browser") == null
+                ? "chrome"
+                : System.getProperty("test.browser"))
         : instanceRemoteDriver(
-            "http://selenium.k8sprodint.riskiq", System.getProperty("test.browser"));
+            System.getProperty("seleniumGrid"),
+            System.getProperty("test.browser") == null
+                ? "chrome"
+                : System.getProperty("test.browser"));
   }
 
   public WebDriver instanceLocalDriver(@NonNull String browserName) {
@@ -52,7 +57,9 @@ public class RemoteWebDriverUtils {
   public WebDriver instanceRemoteDriver(@NonNull String remoteAddress, @NonNull String browserName)
       throws MalformedURLException {
     capabilities.setBrowserName(browserName);
-    return new RemoteWebDriver(new URL(String.format("%s/wd/hub", remoteAddress)), capabilities);
+    capabilities.merge(instanceDriverCapabilities());
+    return new RemoteWebDriver(
+        new URL(String.format("http://%s/wd/hub", remoteAddress)), capabilities);
   }
 
   public DesiredCapabilities instanceDriverCapabilities() {

@@ -10,10 +10,10 @@ public class ParameterTypes {
     return Credentials.builder()
         .username(
             System.getProperty(
-                String.format("%s.user.username.%s", userType, System.getProperty("environment"))))
+                String.format("test.%s.user.username", userType)))
         .password(
             System.getProperty(
-                String.format("%s.user.password.%s", userType, System.getProperty("environment"))))
+                String.format("test.%s.user.password", userType)))
         .build();
   }
 }

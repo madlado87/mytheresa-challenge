@@ -70,6 +70,24 @@
             <version>5.5.3</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>production</id>
+            <activation>
+                <property>
+                    <name>environment</name>
+                    <value>production</value>
+                </property>
+            </activation>
+            <properties>
+                <test.url>https://www.mytheresa.com/en-de/men.html</test.url>
+                <test.valid.user.username>miguel.delgado.esp+work@gmail.com</test.valid.user.username>
+                <test.valid.user.password>5_@XVEcJpJT?ReT</test.valid.user.password>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -80,6 +98,29 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-test-resources</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/test-classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/src/test/resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
